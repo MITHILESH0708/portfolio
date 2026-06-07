@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithilesh P — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #fe0000;
+    --yellow: #FFDE08;
+    --dark: #1a0000;
+    --mid: #ffe84a;
+    --surface: #fff0a0;
+    --border: rgba(254,0,0,0.18);
+    --text: #1a0000;
+    --muted: #7a3a00;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--yellow);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(255,222,8,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(254,0,0,0.2);
+  }
+
+  .nav-shortcuts {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .nav-shortcut {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid rgba(254,0,0,0.25);
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    background: rgba(254,0,0,0.04);
+  }
+  .nav-shortcut:hover {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+    transform: translateY(-1px);
+  }
+  .nav-shortcut svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'M';
+    position: absolute;
+    right: -0.05em;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 55vw;
+    color: rgba(254,0,0,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    color: #1a0000;
+  }
+
+  .hero h1 span {
+    color: var(--red);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: #7a3a00;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--red);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #cc0000; transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(254,0,0,0.5);
+    color: var(--red);
+    padding: 0.85rem 2rem;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-outline:hover { background: rgba(254,0,0,0.08); transform: translateY(-1px); }
+
+  .hero-contact {
+    position: absolute;
+    bottom: 3rem;
+    right: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .hero-contact a {
+    color: #5a2800;
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .hero-contact a:hover { color: var(--red); }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(254,0,0,0.25), transparent);
+    margin: 0 4rem;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 4rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .section-label::after {
+    content: '';
+    height: 1px;
+    width: 3rem;
+    background: var(--red);
+    display: inline-block;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 3rem;
+    color: #1a0000;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: #5a2800;
+    font-size: 1.05rem;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-box {
+    background: rgba(254,0,0,0.07);
+    border: 1px solid rgba(254,0,0,0.18);
+    border-radius: 6px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: #7a3a00;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid rgba(254,0,0,0.18);
+    border-radius: 6px;
+    padding: 1.8rem;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .skill-card:hover {
+    border-color: rgba(254,0,0,0.4);
+    transform: translateY(-3px);
+  }
+
+  .skill-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-icon.red { background: rgba(254,0,0,0.12); color: var(--red); }
+  .skill-icon.yellow { background: rgba(254,0,0,0.1); color: var(--red); }
+
+  .skill-card h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    color: #1a0000;
+  }
+
+  .skill-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-red { background: rgba(254,0,0,0.15); color: #ff6666; border: 1px solid rgba(254,0,0,0.2); }
+  .tag-yellow { background: rgba(254,0,0,0.1); color: #cc0000; border: 1px solid rgba(254,0,0,0.2); }
+  .tag-gray { background: rgba(0,0,0,0.06); color: #7a3a00; border: 1px solid rgba(0,0,0,0.12); }
+
+  /* SOFT SKILLS */
+  .soft-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .soft-pill {
+    padding: 0.6rem 1.4rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.88rem;
+    color: #5a2800;
+    transition: all 0.2s;
+  }
+  .soft-pill:hover {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  /* EDUCATION */
+  .edu-timeline { position: relative; padding-left: 2rem; }
+
+  .edu-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--red), #cc0000);
+    border-radius: 2px;
+  }
+
+  .edu-item {
+    position: relative;
+    padding-bottom: 3rem;
+  }
+  .edu-item:last-child { padding-bottom: 0; }
+
+  .edu-dot {
+    position: absolute;
+    left: -2.45rem;
+    top: 0.3rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--red);
+    border: 3px solid var(--yellow);
+    box-shadow: 0 0 0 2px var(--red);
+  }
+
+  .edu-year {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .edu-degree {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #1a0000;
+  }
+
+  .edu-school {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: #ffe84a;
+    border-top: 1px solid rgba(254,0,0,0.2);
+    border-bottom: 1px solid rgba(254,0,0,0.2);
+    text-align: center;
+  }
+
+  .contact-section .section-label { justify-content: center; }
+  .contact-section .section-label::after { display: none; }
+
+  .contact-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 2rem;
+    color: #1a0000;
+  }
+
+  .contact-big span { color: var(--red); }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.8rem;
+    background: var(--surface);
+    border: 1px solid rgba(254,0,0,0.2);
+    border-radius: 5px;
+    text-decoration: none;
+    color: #1a0000;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--red);
+    color: var(--red);
+    transform: translateY(-2px);
+  }
+  .contact-link .cl-icon {
+    width: 20px; height: 20px;
+    opacity: 0.6;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(254,0,0,0.2);
+  }
+
+  footer .fl {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: var(--red);
+  }
+
+  footer .fr {
+    font-size: 0.8rem;
+    color: #7a3a00;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .hero::before { font-size: 80vw; }
+    .hero-contact { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .divider { margin: 0 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-shortcuts">
+    <a href="#about" class="nav-shortcut" title="About">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </a>
+    <a href="#skills" class="nav-shortcut" title="Skills">
+      <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    </a>
+    <a href="#education" class="nav-shortcut" title="Education">
+      <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    </a>
+    <a href="#contact" class="nav-shortcut" title="Contact">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+    </a>
+    <a href="mailto:mithilesh08012007@gmail.com" class="nav-shortcut" title="Email Me">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.5 3.38 2 2 0 0 1 3.5 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <div class="hero-tag">Open to Opportunities</div>
+    <h1>
+      MITHILESH
+      <span>P.</span>
+    </h1>
+    <p class="hero-sub">
+      Computer Science &amp; Engineering student passionate about programming, web development, and building real-world solutions.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Get in Touch
+      </a>
+      <a href="#skills" class="btn-outline">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        View Skills
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-contact">
+    <a href="mailto:mithilesh08012007@gmail.com">mithilesh08012007@gmail.com</a>
+    <a href="tel:+917550251100">+91 75502 51100</a>
+    <a href="#">Chennai, Tamil Nadu</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-label">About Me</div>
+    <div class="section-title">WHO I AM</div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I'm an aspiring Computer Science and Engineering student at S.A. Engineering College, Chennai, with a strong foundation in programming and web development technologies.
+      </p>
+      <p>
+        I'm driven by curiosity and a passion for emerging technologies. Whether it's writing clean code in Python or designing layouts with HTML and CSS, I bring analytical thinking and a problem-solving mindset to everything I do.
+      </p>
+      <p>
+        I thrive in collaborative environments and am continuously learning — eager to contribute to meaningful projects and grow as a developer.
+      </p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-box">
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Programming Languages</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">2+</div>
+        <div class="stat-label">Web Technologies</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">2024</div>
+        <div class="stat-label">HSC Completed</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Curiosity Level</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <div class="section-label">Technical Skills</div>
+    <div class="section-title">WHAT I KNOW</div>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon red">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <h3>Programming Languages</h3>
+      <p style="color:#5a2800">Proficient in foundational and versatile languages for problem-solving and software development.</p>
+      <div class="skill-tags">
+        <span class="tag tag-red">C</span>
+        <span class="tag tag-red">C++</span>
+        <span class="tag tag-yellow">Python</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-icon yellow">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <h3>Web Technologies</h3>
+      <p style="color:#5a2800">Building structured, styled, and responsive web interfaces using core web technologies.</p>
+      <div class="skill-tags">
+        <span class="tag tag-yellow">HTML</span>
+        <span class="tag tag-yellow">CSS</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-icon red">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>
+      </div>
+      <h3>Databases</h3>
+      <p style="color:#5a2800">Knowledgeable in relational and advanced database concepts including distributed and temporal models.</p>
+      <div class="skill-tags">
+        <span class="tag tag-red">MySQL</span>
+        <span class="tag tag-gray">SQL</span>
+        <span class="tag tag-gray">Distributed DB</span>
+        <span class="tag tag-gray">Temporal DB</span>
+        <span class="tag tag-gray">Spatial DB</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-icon yellow">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <h3>Tools &amp; Software</h3>
+      <p style="color:#5a2800">Experienced with industry-standard development environments for coding and database management.</p>
+      <div class="skill-tags">
+        <span class="tag tag-yellow">VS Code</span>
+        <span class="tag tag-gray">MySQL Workbench</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Soft Skills -->
+  <div style="margin-top: 4rem;" class="reveal">
+    <div class="section-label">Soft Skills</div>
+    <div class="soft-skills">
+      <div class="soft-pill">🧩 Problem Solving</div>
+      <div class="soft-pill">🤝 Communication &amp; Teamwork</div>
+      <div class="soft-pill">⚡ Adaptability</div>
+      <div class="soft-pill">🕐 Time Management</div>
+      <div class="soft-pill">📚 Continuous Learning</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="reveal">
+    <div class="section-label">Education</div>
+    <div class="section-title">MY JOURNEY</div>
+  </div>
+
+  <div class="edu-timeline">
+    <div class="edu-item reveal">
+      <div class="edu-dot" style="background: var(--red); box-shadow: 0 0 0 2px var(--red);"></div>
+      <div class="edu-year">Pursuing — Present</div>
+      <div class="edu-degree">Bachelor of Engineering — Computer Science &amp; Engineering</div>
+      <div class="edu-school" style="color:#7a3a00">S.A. Engineering College, Chennai</div>
+    </div>
+
+    <div class="edu-item reveal">
+      <div class="edu-dot"></div>
+      <div class="edu-year">Completed — 2024</div>
+      <div class="edu-degree">Higher Secondary Education (12th Grade)</div>
+      <div class="edu-school" style="color:#7a3a00">Velammal Matriculation Higher Secondary School, Mogappair</div>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div style="margin-top: 4rem;" class="reveal">
+    <div class="section-label">Experience</div>
+    <div class="section-title" style="margin-bottom: 2rem;">ACADEMIC WORK</div>
+    <div class="skill-card" style="max-width: 700px;">
+      <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem;">
+        <div class="skill-icon red" style="flex-shrink: 0;">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 0.2rem;">Student / Academic Project Contributor</h3>
+          <p style="font-size: 0.82rem; color: #7a3a00;">S.A. Engineering College &nbsp;·&nbsp; Pursuing</p>
+        </div>
+      </div>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem;">
+        <li style="display: flex; gap: 0.7rem; font-size: 0.9rem; color: #5a2800;">
+          <span style="color: var(--red); flex-shrink: 0; margin-top: 2px;">→</span>
+          Pursuing coursework in Computer Science and Engineering fundamentals
+        </li>
+        <li style="display: flex; gap: 0.7rem; font-size: 0.9rem; color: #aaa;">
+          <span style="color: var(--red); flex-shrink: 0; margin-top: 2px;">→</span>
+          Building programming skills through practical coding exercises and assignments
+        </li>
+        <li style="display: flex; gap: 0.7rem; font-size: 0.9rem; color: #aaa;">
+          <span style="color: var(--red); flex-shrink: 0; margin-top: 2px;">→</span>
+          Developing problem-solving, logical thinking, and analytical capabilities
+        </li>
+        <li style="display: flex; gap: 0.7rem; font-size: 0.9rem; color: #aaa;">
+          <span style="color: var(--red); flex-shrink: 0; margin-top: 2px;">→</span>
+          Exploring web technologies, software development concepts, and programming methodologies
+        </li>
+        <li style="display: flex; gap: 0.7rem; font-size: 0.9rem; color: #aaa;">
+          <span style="color: var(--red); flex-shrink: 0; margin-top: 2px;">→</span>
+          Participating in collaborative learning and technical discussions
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="reveal">
+    <div class="section-label">Contact</div>
+    <div class="contact-big">
+      LET'S<br><span>CONNECT</span>
+    </div>
+    <p style="color: #5a2800; font-size: 1rem; max-width: 500px; margin: 0 auto;">
+      I'm always open to new opportunities, collaborations, and conversations. Feel free to reach out!
+    </p>
+  </div>
+
+  <div class="contact-links reveal">
+    <a href="mailto:mithilesh08012007@gmail.com" class="contact-link">
+      <svg class="cl-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      mithilesh08012007@gmail.com
+    </a>
+    <a href="tel:+917550251100" class="contact-link">
+      <svg class="cl-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.5 3.38 2 2 0 0 1 3.5 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +91 75502 51100
+    </a>
+    <a href="#" class="contact-link">
+      <svg class="cl-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Chennai, Tamil Nadu
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">MITHILESH P</div>
+  <div class="fr">© 2024 — Built with passion &amp; code</div>
+</footer>
+
+<script src="mithilesh_portfolio.js"></script>
+
+</body>
+</html>
